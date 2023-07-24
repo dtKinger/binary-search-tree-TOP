@@ -30,7 +30,6 @@ function mergeSort (arr) {
 
 function mergeHalves (leftHalf, rightHalf) {
   let sortedArray = [];
-  let recyclingBin = [];
   while (leftHalf.length > 0 && rightHalf.length > 0) {
     if (leftHalf[0] < rightHalf[0]){
       sortedArray.push(leftHalf.shift())
@@ -40,7 +39,6 @@ function mergeHalves (leftHalf, rightHalf) {
       rightHalf.shift() // Throw out the duplicates during merge phase
     }
   }
-  console.log(recyclingBin)
   return sortedArray.concat(leftHalf, rightHalf);
 }
 
