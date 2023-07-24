@@ -10,7 +10,7 @@
 //    sort right half of elements
 //    merge sorted halves.
 
-let arr = [4, 8, 6, 2, 1, 7, 5, 3];
+// let arr = [4, 8, 6, 2, 1, 7, 5, 3];
 
 function mergeSort (arr) {
   if (arr.length < 2){
@@ -24,9 +24,9 @@ function mergeSort (arr) {
   
 }
 
-console.log(`Original array: ${arr}`)
-console.log(`mergeSort(arr): ${mergeSort(arr)}`);
-console.log(`Try it yourself... call mergeSort() and pass in an [array]`)
+// console.log(`Original array: ${arr}`)
+// console.log(`mergeSort(arr): ${mergeSort(arr)}`);
+// console.log(`Try it yourself... call mergeSort() and pass in an [array]`)
 
 function mergeHalves (leftHalf, rightHalf) {
   let sortedArray = [];
@@ -38,3 +38,5 @@ function mergeHalves (leftHalf, rightHalf) {
   }
   return sortedArray.concat(leftHalf, rightHalf);
 }
+
+module.exports = mergeSort;
