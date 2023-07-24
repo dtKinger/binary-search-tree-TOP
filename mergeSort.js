@@ -1,5 +1,6 @@
 // Build a function mergeSort that takes in an array and returns 
 // a sorted array, using a recursive merge sort methodology.
+// Modify the mergeSort to throw out duplicates.
 
 /* Pseudocode */
 // on input of n elements
