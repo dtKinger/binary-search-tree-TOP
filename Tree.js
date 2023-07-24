@@ -1,17 +1,31 @@
 const Node = require('./Node')
 const mergeSort = require('./mergeSort')
-const testArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 
-class Tree {
-  constructor(head){
-    this.root = buildTree(array)
-    this.levels = []
-  }
-
-  buildTree () {
-
-  }
+function buildTree (testArray) {
+  let sortedArray = mergeSort(testArray)
+  console.log(sortedArray)
+  return sortedArray[0];
 }
 
-let sortHerOut = mergeSort(testArray)
-console.log(sortHerOut)
+class Tree {
+  constructor(testArray){
+    this.root = buildTree(testArray)
+    this.levels = 0;
+  }
+
+  prettyPrint = (node, prefix = "", isLeft = true) => {
+    if (node === null) {
+      return;
+    }
+    if (node.right !== null) {
+      prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
+    }
+    console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
+    if (node.left !== null) {
+      prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
+    }
+  };
+
+}
+
+module.exports = Tree
