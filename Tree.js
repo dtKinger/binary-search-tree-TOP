@@ -37,6 +37,15 @@ class Tree {
     }
   }
 
+  findMinNode(node){
+    // if left of a node is null
+    // then it must be minimum node
+    if(node.left === null)
+      return node;
+    else
+      return this.findMinNode(node.left);
+  }
+
   remove(data){
     // root is re-initialized with
     // root of a modified tree.
