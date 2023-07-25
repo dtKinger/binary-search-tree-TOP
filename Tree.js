@@ -7,7 +7,42 @@ let sortedArray = mergeSort(testArray);
 class Tree {
   constructor(sortMeFirst){
     this.root = buildTree(sortMeFirst, 0, sortMeFirst.length - 1);
-    // this.levels = 0; // Just need to count the layers of recursion while building to get this
+  }
+
+  // helper method for node generation
+  insert(data){
+    let newNode = new Node(data);
+            
+    if(this.root === null)
+      this.root = newNode;
+    else
+      // find the correct position in the
+      // tree and add the node
+    this.insertNode(this.root, newNode);
+  }
+
+  // Method to insert a node in a tree
+
+  insertNode(node, newNode){
+    if(newNode.data < node.data)
+    {
+      // if left is null insert node here
+      if(node.left === null)
+        node.left = newNode;
+      else
+
+        // if left is not null recur until
+        // null is found
+        this.insertNode(node.left, newNode);
+    }
+
+    else
+    {
+      if(node.right === null)
+        node.right = newNode;
+      else
+        this.insertNode(node.right, newNode);
+    }
   }
 }
 
@@ -27,6 +62,5 @@ function buildTree (arr, start, end) {
   node.right = buildTree(arr, midIndex + 1, end)  
 return node;
 }
-
 
 module.exports = { Tree, buildTree, sortedArray }
