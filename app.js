@@ -2,9 +2,9 @@ const Tree = require('./Tree');
 let workingArray = Tree.sortedArray;
 
 // Build a tree from a sorted array
-/// let root = Tree.buildTree(workingArray, 0, workingArray.length - 1); // => Node {data: 8, left: Node {data: 4, left: Node, right: Node}, right: Node {...} }
-let root = new Tree.Tree(workingArray, 0, workingArray.length - 1); // Tree {root: Node {data: 8, left: Node {data: 4, left: Node, right: Node}, right: Node {...} } }
-console.info(root);
+// let root = Tree.buildTree(workingArray, 0, workingArray.length - 1); // => Node {data: 8, left: Node {data: 4, left: Node, right: Node}, right: Node {...} }
+let root = new Tree.Tree(workingArray, 0, workingArray.length - 1).root; // Tree {root: Node {data: 8, left: Node {data: 4, left: Node, right: Node}, right: Node {...} } }
+
 
  /* =================== \
 |  Traversal functions   |
@@ -20,9 +20,10 @@ function preOrder(node){
   preOrder(node.left);
   preOrder(node.right);
 }
-console.log("Preorder traversal of constructed BST<br>");
+console.log("Preorder traversal of constructed BST");
 // preOrder(root);
-
+// preOrder(rootTwo)
+prettyPrint(root);
 // In-order LDR
 function inOrder(root){
   if (node == null){
