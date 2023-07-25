@@ -36,6 +36,55 @@ class Tree {
       }
     }
   }
+
+  remove(data){
+    // root is re-initialized with
+    // root of a modified tree.
+    this.root = this.removeNode(this.root, data);
+  }
+
+  // Method to find the data and remove it
+  removeNode(node, key){ // remove(data) passes data into key. this.root passed into node.
+    if(node === null){ // traverse the tree without finding the data?
+      return null
+    } else if(key < node.data){ // if lesser, traverse left tree
+      // key = the data to be deleted.
+      node.left = this.removeNode(node.left, key);
+      return node;
+    } else if(key > node.data) { // if greater, move to the right tree
+      node.right = this.removeNode(node.right, key);
+      return node;
+    } else { // if data is a match, delete node
+
+      // deleting node with no children
+      if(node.left === null && node.right === null)
+      {
+        node = null;
+        return node;
+      }
+
+      // deleting node with one child
+      if(node.left === null)
+      {
+        node = node.right;
+        return node;
+      }
+      
+      else if(node.right === null)
+      {
+        node = node.left;
+        return node;
+      }
+
+      // Deleting node with two children
+    
+      let nextBiggest = this.findMinNode(node.right);
+      node.data = nextBiggest.data;
+
+      node.right = this.removeNode(node.right, nextBiggest.data);
+      return node;
+    }
+  }
 } // End of Tree class.
 
 function buildTree (arr, start, end) {

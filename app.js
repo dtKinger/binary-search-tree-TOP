@@ -9,7 +9,9 @@ let aTree = new Tree.Tree(workingArray, 0, workingArray.length - 1); // Tree {ro
 let root = aTree.root
 
 aTree.insert(65)
-prettyPrint(root);
+prettyPrint(root)
+aTree.remove(65)
+prettyPrint(root)
 
 
  /* =================== \
