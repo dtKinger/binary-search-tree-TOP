@@ -1,8 +1,8 @@
 const Node = require('./Node')
 const mergeSort = require('./mergeSort')
+
 let testArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 let sortedArray = mergeSort(testArray);
-let root = null;
 
 class Tree {
   constructor(sortMeFirst){
@@ -11,14 +11,14 @@ class Tree {
   }
 }
 
-// console.log(sortedArray.length)
 function buildTree (arr, start, end) {
   // base case
   if (start > end){
     return null;
   }
-  // Get middle element and make it the root
+  // Get middle element
   let midIndex = parseInt((start + end) / 2)
+  // => In app.js we make this the root 
   let node = new Node(arr[midIndex])
 
   // // Build the left of the tree recursively
@@ -29,37 +29,4 @@ return node;
 }
 
 
-/* A utility function to print preorder traversal of BST */
-function preOrder(node)
-{
-    if (node == null)
-    {
-        return;
-    }
-    console.log(node.data + ",");
-    preOrder(node.left);
-    preOrder(node.right);
-}
- 
-console.log("Preorder traversal of constructed BST<br>");
-root = buildTree(sortedArray, 0, sortedArray.length - 1);
-console.log(sortedArray)
-// preOrder(root);
-
-function prettyPrint (node, prefix = "", isLeft = true) {
-    
-  if (node === null) {
-    return;
-  }
-  if (node.right !== null) {
-    prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
-  }
-  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
-  if (node.left !== null) {
-    prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
-  }
-};
-prettyPrint(root);
-
-
-module.exports = Tree
+module.exports = { Tree, buildTree, sortedArray }
