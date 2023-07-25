@@ -8,7 +8,6 @@ let workingArray = Tree.sortedArray;
 let aTree = new Tree.Tree(workingArray, 0, workingArray.length - 1); // Tree {root: Node {data: 8, left: Node {data: 4, left: Node, right: Node}, right: Node {...} } }
 let root = aTree.root
 
-
 aTree.insert(65)
 prettyPrint(root);
 
