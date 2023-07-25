@@ -44,7 +44,7 @@ function preOrder(node)
 console.log("Preorder traversal of constructed BST<br>");
 root = buildTree(sortedArray, 0, sortedArray.length - 1);
 console.log(sortedArray)
-preOrder(root);
+// preOrder(root);
 
 function prettyPrint (node, prefix = "", isLeft = true) {
     
@@ -59,6 +59,7 @@ function prettyPrint (node, prefix = "", isLeft = true) {
     prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
   }
 };
+prettyPrint(root);
 
 
 module.exports = Tree
