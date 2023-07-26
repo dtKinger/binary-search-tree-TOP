@@ -14,7 +14,9 @@ let root = aTree.root
 // prettyPrint(root)
 // aTree.find(324);
 // prettyPrint(root)
-levelOrder(root);
+
+// levelOrder(root, breadthOutput);
+levelOrder(root)
 
 
 
@@ -26,9 +28,18 @@ levelOrder(root);
 // 2. Add it's children to the queue
 // 3. shift() and read the next node in the queue / Repeat 1 - 3
 
+function breadthOutput (node){ // a function to call in levelOrder's 2nd param
+  console.log(node.data)
+}
 
+function arrayIfy (node, arr) { // default function if nothing is called in 
+  // levelOrder's second parameter
+  if (node.value) arr.push(node.value)
+  return arr;
+}
 
-function levelOrder(root){
+function levelOrder(root, func = arrayIfy){
+
   if (!root) return [];
 
   const queue = [root];
@@ -40,12 +51,14 @@ function levelOrder(root){
     
     while (length--){
       let node = queue.shift();
-      console.log(node.data)
+      func(node, result);
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
   }
+  return console.log(result)
 }
+
   
 
 
