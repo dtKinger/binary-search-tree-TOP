@@ -1,6 +1,7 @@
 const Tree = require('./Tree');
 const Node = require('./Node')
 let workingArray = Tree.sortedArray;
+let sideput = [];
 
 // Build a tree from a sorted array
 // let root = Tree.buildTree(workingArray, 0, workingArray.length - 1); // => Node {data: 8, left: Node {data: 4, left: Node, right: Node}, right: Node {...} }
@@ -16,7 +17,7 @@ let root = aTree.root
 // prettyPrint(root)
 
 // levelOrder(root, breadthOutput);
-levelOrder(root)
+levelOrder(root, breadthOutput)
 
 
 
@@ -29,13 +30,14 @@ levelOrder(root)
 // 3. shift() and read the next node in the queue / Repeat 1 - 3
 
 function breadthOutput (node){ // a function to call in levelOrder's 2nd param
-  console.log(node.data)
+  console.log("We didn't let the default arrayIfy function run!")
 }
 
-function arrayIfy (node, arr) { // default function if nothing is called in 
+function arrayIfy (node) { // default function if nothing is called in 
   // levelOrder's second parameter
-  if (node.value) arr.push(node.value)
-  return arr;
+  sideput.push(node.data)
+  
+  return sideput;
 }
 
 function levelOrder(root, func = arrayIfy){
@@ -51,17 +53,15 @@ function levelOrder(root, func = arrayIfy){
     
     while (length--){
       let node = queue.shift();
-      func(node, result);
+      if (node.data){
+        func(node);
+      }
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
   }
-  return console.log(result)
+  return console.log(sideput)
 }
-
-  
-
-
 
 
  /* =================== \
