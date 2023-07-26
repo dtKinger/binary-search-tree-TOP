@@ -2,31 +2,57 @@ const Tree = require('./Tree');
 const Node = require('./Node')
 let workingArray = Tree.sortedArray;
 
-
 // Build a tree from a sorted array
 // let root = Tree.buildTree(workingArray, 0, workingArray.length - 1); // => Node {data: 8, left: Node {data: 4, left: Node, right: Node}, right: Node {...} }
 let aTree = new Tree.Tree(workingArray, 0, workingArray.length - 1); // Tree {root: Node {data: 8, left: Node {data: 4, left: Node, right: Node}, right: Node {...} } }
 let root = aTree.root
 
+
 // aTree.insert(65)
 // prettyPrint(root)
 // aTree.remove(67)
 // prettyPrint(root)
-aTree.find(324);
-prettyPrint(root)
+// aTree.find(324);
+// prettyPrint(root)
+levelOrder(root);
 
 
 
  /* =================== \
-| Modification functions |
+|     Array as Queue     |
  \ =================== */
 
-function removeNode (data) {
+// 1. Read a Node
+// 2. Add it's children to the queue
+// 3. shift() and read the next node in the queue / Repeat 1 - 3
 
+
+
+function levelOrder(root){
+  if (!root) return [];
+
+  const queue = [root];
+  const result = [];
+
+  while (queue.length){
+    let length = queue.length;
+    result.push(queue.map(node => node.data))
+    
+    while (length--){
+      let node = queue.shift();
+      console.log(node.data)
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+  }
 }
+  
+
+
+
 
  /* =================== \
-|  ENDOF Modication FNs  |
+|   End of array Queue   |
  \ =================== */
 
 
@@ -60,7 +86,7 @@ function inOrder(node){
 }
 // console.log('In-order traversal (LDR):')
 // inOrder(root);
-// prettyPrint(root);
+prettyPrint(root);
 
 // Post-order LRD
 
