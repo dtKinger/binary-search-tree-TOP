@@ -94,6 +94,27 @@ class Tree {
       return node;
     }
   }
+
+  find (data){
+    result = this.findNode(this.root, data);
+    console.log(result)
+  }
+
+  findNode (node, key) {
+    console.log(node)
+    // First steps of deleting
+    if(node === null){ // traverse the tree without finding the data?
+      return null
+    } else if(key < node.data){ // if lesser, traverse left tree
+      // key = the data to be deleted.
+      node.left = this.findNode(node.left, key);
+      return node;
+    } else if(key > node.data) { // if greater, move to the right tree
+      node.right = this.findNode(node.right, key);
+      return node;
+    }
+  }
+
 } // End of Tree class.
 
 function buildTree (arr, start, end) {
@@ -110,7 +131,7 @@ function buildTree (arr, start, end) {
   node.left = buildTree(arr, start, midIndex - 1)
   // // Build the right of the tree recursively
   node.right = buildTree(arr, midIndex + 1, end)  
-return node;
+  return node;
 }
 
 module.exports = { Tree, buildTree, sortedArray }

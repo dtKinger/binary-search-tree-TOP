@@ -12,6 +12,7 @@ aTree.insert(65)
 prettyPrint(root)
 aTree.remove(65)
 prettyPrint(root)
+aTree.findNode(root);
 
 
  /* =================== \
