@@ -12,8 +12,8 @@ let root = aTree.root
 // prettyPrint(root)
 // aTree.remove(67)
 // prettyPrint(root)
-aTree.search(root, 324);
-// prettyPrint(root)
+aTree.find(324);
+prettyPrint(root)
 
 
 

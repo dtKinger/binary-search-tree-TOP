@@ -95,17 +95,32 @@ class Tree {
     }
   }
 
-  find(node, data) {
+  find (data) {
+    return this.findNode(this.root, data)
+  }
+
+  findNode(node, data) {
     // First steps of deleting
     if(node === null){ // traverse the tree without finding the data?
       return console.log(`Sorry, we didn't find ${data} in this binary tree.`)
     } else if(data < node.data){ // if lesser, traverse left tree
       // data = the data to find/match
-      return this.find(node.left, data);
+      return this.findNode(node.left, data);
     } else if(data > node.data) { // if greater, move to the right tree
-      return this.find(node.right, data);
+      return this.findNode(node.right, data);
     } else if (data === node.data) {
-      return console.log(`We found ${data} in the tree!`)
+      console.log(`We found ${data} in the tree!`)
+      if (node.left !== null){
+        console.log(`It has a left node of ${node.left.data}`)
+      } else {
+        console.log(`It has no left node.`)
+      }
+      if (node.right !== null){
+        console.log(`It has a right node of ${node.right.data}`)
+      } else {
+        console.log(`It has no right node.`)
+      }
+      return node;
     }
   }
 
