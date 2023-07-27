@@ -16,10 +16,7 @@ let root = aTree.root
 // aTree.find(324);
 // prettyPrint(root)
 
-// levelOrder(root, breadthOutput);
-levelOrder(root, breadthOutput)
-
-
+levelOrder(root, add10)
 
  /* =================== \
 |     Array as Queue     |
@@ -29,8 +26,11 @@ levelOrder(root, breadthOutput)
 // 2. Add it's children to the queue
 // 3. shift() and read the next node in the queue / Repeat 1 - 3
 
-function breadthOutput (node){ // a function to call in levelOrder's 2nd param
-  console.log("We didn't let the default arrayIfy function run!")
+function add10 (node){ // a function to call in levelOrder's 2nd param
+  node.data = parseInt(node.data) + 10
+
+  sideput.push(node.data)
+  return sideput;
 }
 
 function arrayIfy (node) { // default function if nothing is called in 
@@ -60,7 +60,9 @@ function levelOrder(root, func = arrayIfy){
       if (node.right) queue.push(node.right);
     }
   }
-  return console.log(sideput)
+  if (sideput.length > 0){
+    return console.log(sideput)
+  }
 }
 
 
