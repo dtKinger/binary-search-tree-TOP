@@ -16,7 +16,10 @@ let root = aTree.root
 // aTree.find(324);
 // prettyPrint(root)
 
-levelOrder(root, add10)
+// levelOrder(root, add10)
+
+preOrder(root);
+console.log(sideput);
 
  /* =================== \
 |     Array as Queue     |
@@ -35,8 +38,9 @@ function add10 (node){ // a function to call in levelOrder's 2nd param
 
 function arrayIfy (node) { // default function if nothing is called in 
   // levelOrder's second parameter
-  sideput.push(node.data)
-  
+  if (node.data){
+    sideput.push(node.data)
+  }
   return sideput;
 }
 
@@ -53,9 +57,7 @@ function levelOrder(root, func = arrayIfy){
     
     while (length--){
       let node = queue.shift();
-      if (node.data){
-        func(node);
-      }
+      func(node);
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
@@ -77,21 +79,23 @@ function levelOrder(root, func = arrayIfy){
 
 // Preoder DLR
 
-function preOrder(node){
+function preOrder(node, func = arrayIfy){
   if (node == null)
   {
       return;
   }
-  console.log(`${node.data}, `);
+  func(node)
+  
   preOrder(node.left);
   preOrder(node.right);
+  
 }
 // console.log('Pre-order traversal (DLR):')
 // preOrder(root);
 
 // In-order LDR
 
-function inOrder(node){
+function inOrder(node, func = arrayIfy){
   if (node == null){
     return
   }
@@ -101,11 +105,11 @@ function inOrder(node){
 }
 // console.log('In-order traversal (LDR):')
 // inOrder(root);
-prettyPrint(root);
+// prettyPrint(root);
 
 // Post-order LRD
 
-function postOrder(node){
+function postOrder(node, func = arrayIfy){
   if (node == null){
     return
   }
