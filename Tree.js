@@ -3,6 +3,7 @@ const mergeSort = require('./mergeSort')
 
 let testArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 let sortedArray = mergeSort(testArray);
+let depth = -1;
 
 class Tree {
   constructor(sortMeFirst){
@@ -98,10 +99,13 @@ class Tree {
   }
 
 
+  
   find (data) { // Call this, not findNode()
+    
     return this.findNode(this.root, data)
   }
     findNode(node, data) {
+      depth += 1
       // First steps of deleting
       if(node === null){ // traverse the tree without finding the data?
         return console.log(`Sorry, we didn't find ${data} in this binary tree.`)
@@ -122,6 +126,7 @@ class Tree {
         } else {
           console.log(`It has no right node.`)
         }
+        console.log(depth)
         return node;
       }
     }

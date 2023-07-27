@@ -13,8 +13,8 @@ let root = aTree.root
 // aTree.insert(65)
 // prettyPrint(root)
 // aTree.remove(67)
-// prettyPrint(root)
-// aTree.find(324);
+prettyPrint(root)
+aTree.find(8);
 // prettyPrint(root)
 
 // levelOrder(root, add10)
@@ -23,7 +23,9 @@ let root = aTree.root
 // console.log(sideput);
 
 // prettyPrint(root)
-findHeight(root, 8);
+// findHeight(root, 8);
+
+// findDepth(root, 8);
 
  /* =================== \
 |     Array as Queue     |
@@ -84,22 +86,32 @@ function levelOrder(root, func = arrayIfy){
   // (check all leafs and take the king of the hill)
   // It's like find() but count on the way and then compare - reassign if greater
 
- function findHeightUtil(root, x){
+// Function to find the depth of
+// a given node in a Binary Tree
+function findDepth(root, x){
+  if (root == null)
+  {
+    return -1;
+  }
+}
+
+
+function findHeightUtil(root, x){
         
   // Base Case
   if (root == null)
   {
-      return -1;
+    return -1;
   }
 
   // Store the maximum height of
   // the left and right subtree
-  var leftHeight = findHeightUtil(root.left, x);
+  let leftHeight = findHeightUtil(root.left, x);
 
-  var rightHeight = findHeightUtil(root.right, x);
+  let rightHeight = findHeightUtil(root.right, x);
 
   // Update height of the current node
-  var ans = Math.max(leftHeight, rightHeight) + 1;
+  let ans = Math.max(leftHeight, rightHeight) + 1;
 
   // If current node is the required node
   if (root.data == x)
