@@ -7,6 +7,8 @@ let sortedArray = mergeSort(testArray);
 class Tree {
   constructor(sortMeFirst){
     this.root = buildTree(sortMeFirst, 0, sortMeFirst.length - 1);
+    this.heightCounter = 0;
+    this.depthCounter = 0;
   }
 
   // helper method for node generation
@@ -93,6 +95,27 @@ class Tree {
       node.right = this.removeNode(node.right, nextBiggest.data);
       return node;
     }
+  }
+
+  // Height // root should have highest height (3) maximum jumps to a leaf 
+    // (check all leafs and take the king of the hill)
+    // It's like find() but count on the way and then compare - reassign if greater
+
+
+  // Depth // root should have lowest depth (0)
+    // deepest leaf should have the greatest depth (3)
+
+  height (data) {
+    return this.findHeight(this.root, data)
+  }
+  
+  findHeight(node, data){
+    if (!this.find(data)){
+      return;
+    } else {
+
+    }
+    return 
   }
 
   find (data) { // Call this, not findNode()

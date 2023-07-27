@@ -18,8 +18,11 @@ let root = aTree.root
 
 // levelOrder(root, add10)
 
-inOrder(root);
-console.log(sideput);
+// inOrder(root);
+// console.log(sideput);
+
+prettyPrint(root)
+aTree.height(6);
 
  /* =================== \
 |     Array as Queue     |
@@ -57,7 +60,7 @@ function levelOrder(root, func = arrayIfy){
     
     while (length--){
       let node = queue.shift();
-      func(node);
+      func(node); // Read the node
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
@@ -66,7 +69,6 @@ function levelOrder(root, func = arrayIfy){
     return console.log(sideput)
   }
 }
-
 
  /* =================== \
 |   End of array Queue   |
