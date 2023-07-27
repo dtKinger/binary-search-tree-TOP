@@ -2,6 +2,7 @@ const Tree = require('./Tree');
 const Node = require('./Node')
 let workingArray = Tree.sortedArray;
 let sideput = [];
+let height = -1;
 
 // Build a tree from a sorted array
 // let root = Tree.buildTree(workingArray, 0, workingArray.length - 1); // => Node {data: 8, left: Node {data: 4, left: Node, right: Node}, right: Node {...} }
@@ -21,8 +22,8 @@ let root = aTree.root
 // inOrder(root);
 // console.log(sideput);
 
-prettyPrint(root)
-aTree.height(6);
+// prettyPrint(root)
+findHeight(root, 8);
 
  /* =================== \
 |     Array as Queue     |
@@ -78,6 +79,50 @@ function levelOrder(root, func = arrayIfy){
  /* =================== \
 |  Traversal functions   |
  \ =================== */
+
+  // Height // root should have highest height (3) maximum jumps to a leaf 
+  // (check all leafs and take the king of the hill)
+  // It's like find() but count on the way and then compare - reassign if greater
+
+ function findHeightUtil(root, x){
+        
+  // Base Case
+  if (root == null)
+  {
+      return -1;
+  }
+
+  // Store the maximum height of
+  // the left and right subtree
+  var leftHeight = findHeightUtil(root.left, x);
+
+  var rightHeight = findHeightUtil(root.right, x);
+
+  // Update height of the current node
+  var ans = Math.max(leftHeight, rightHeight) + 1;
+
+  // If current node is the required node
+  if (root.data == x)
+      height = ans;
+
+  return ans;
+}
+
+// Function to find the height of
+// a given node in a Binary Tree
+function findHeight(root, x)
+{
+  
+  // Stores height of the Tree
+  findHeightUtil(root, x);
+
+  // Return the height
+  console.log(height);
+}
+
+
+// Depth // root should have lowest depth (0)
+// deepest leaf should have the greatest depth (3)
 
 // Preoder DLR
 

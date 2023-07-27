@@ -97,26 +97,6 @@ class Tree {
     }
   }
 
-  // Height // root should have highest height (3) maximum jumps to a leaf 
-    // (check all leafs and take the king of the hill)
-    // It's like find() but count on the way and then compare - reassign if greater
-
-
-  // Depth // root should have lowest depth (0)
-    // deepest leaf should have the greatest depth (3)
-
-  height (data) {
-    return this.findHeight(this.root, data)
-  }
-  
-  findHeight(node, data){
-    if (!this.find(data)){
-      return;
-    } else {
-
-    }
-    return 
-  }
 
   find (data) { // Call this, not findNode()
     return this.findNode(this.root, data)
