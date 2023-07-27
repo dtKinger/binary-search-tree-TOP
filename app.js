@@ -18,7 +18,7 @@ let root = aTree.root
 
 // levelOrder(root, add10)
 
-preOrder(root);
+inOrder(root);
 console.log(sideput);
 
  /* =================== \
@@ -84,7 +84,8 @@ function preOrder(node, func = arrayIfy){
   {
       return;
   }
-  func(node)
+
+  func(node) // when a node becomes available, send it to to func to process.
   
   preOrder(node.left);
   preOrder(node.right);
@@ -100,7 +101,9 @@ function inOrder(node, func = arrayIfy){
     return
   }
   inOrder(node.left)
-  console.log(`${node.data}, `);
+  
+  func(node) // when a node becomes available, send it to to func to process.
+
   inOrder(node.right) 
 }
 // console.log('In-order traversal (LDR):')
@@ -114,7 +117,7 @@ function postOrder(node, func = arrayIfy){
     return
   }
   inOrder(node.left)
-  console.log(`${node.data}, `);
+  func(node) // when a node becomes available, send it to to func to process.
   inOrder(node.right) 
 }
 // console.log('Post-order traversal (LRD):')
