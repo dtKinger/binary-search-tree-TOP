@@ -14,7 +14,7 @@ let root = aTree.root
 // prettyPrint(root)
 // aTree.remove(67)
 prettyPrint(root)
-aTree.find(8);
+aTree.depth(7);
 // prettyPrint(root)
 
 // levelOrder(root, add10)
@@ -85,15 +85,6 @@ function levelOrder(root, func = arrayIfy){
   // Height // root should have highest height (3) maximum jumps to a leaf 
   // (check all leafs and take the king of the hill)
   // It's like find() but count on the way and then compare - reassign if greater
-
-// Function to find the depth of
-// a given node in a Binary Tree
-function findDepth(root, x){
-  if (root == null)
-  {
-    return -1;
-  }
-}
 
 
 function findHeightUtil(root, x){

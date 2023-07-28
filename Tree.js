@@ -3,13 +3,14 @@ const mergeSort = require('./mergeSort')
 
 let testArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 let sortedArray = mergeSort(testArray);
-let depth = -1;
+// let depth = -1;
 
 class Tree {
   constructor(sortMeFirst){
     this.root = buildTree(sortMeFirst, 0, sortMeFirst.length - 1);
-    this.heightCounter = 0;
-    this.depthCounter = 0;
+    this.depthCounter = -1;
+    this.leftTreeDeep = 0;
+    this.rightTreeDeep = 0;
   }
 
   // helper method for node generation
@@ -97,16 +98,11 @@ class Tree {
       return node;
     }
   }
-
-
   
   find (data) { // Call this, not findNode()
-    
     return this.findNode(this.root, data)
   }
     findNode(node, data) {
-      depth += 1
-      // First steps of deleting
       if(node === null){ // traverse the tree without finding the data?
         return console.log(`Sorry, we didn't find ${data} in this binary tree.`)
       } else if(data < node.data){ // if lesser, traverse left tree
@@ -126,7 +122,28 @@ class Tree {
         } else {
           console.log(`It has no right node.`)
         }
-        console.log(depth)
+        return node;
+      }
+    }
+
+    depth (data) { // Call this, not findDepth()
+      return this.findDepth(this.root, data)
+    }
+    findDepth(node, data) {
+      this.depthCounter += 1
+      if(node === null){ // traverse the tree without finding the data?
+        return console.log(`Sorry, we didn't find ${data} in this binary tree.`)
+      } else if(data < node.data){ // if lesser, traverse left tree
+        // data = the data to find/match
+        this.leftTreeDeep += 1;
+        return this.findDepth(node.left, data);
+      } else if(data > node.data) { // if greater, move to the right tree
+        this.rightTreeDeep += 1;
+        return this.findDepth(node.right, data);
+      } else if (data === node.data) {
+        console.log(`The depth of ${data} is ${this.depthCounter}!`)
+        if (this.leftTreeDeep > 0) console.log(`Left Tree Depth is ${this.leftTreeDeep}`)
+        if (this.rightTreeDeep > 0) console.log(`Right Tree Depth is ${this.rightTreeDeep}`)
         return node;
       }
     }
