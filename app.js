@@ -33,7 +33,7 @@ prettyPrint(root)
 // measureLeftSubtree(); // Measure height of left subTree
 // measureRightSubtree(); // Measure height of right subTree
 // inOrder(root)
-isBalanced(measureLeftSubtree, measureRightSubtree);
+isBalanced();
 
 
  /* =================== \
@@ -103,15 +103,18 @@ function measureRightSubtree () {
   return parseInt(measureTreeHeight(rightSubtree));
 }
 
-function isBalanced (measureLeft, measureRight, result = 0) {
+function isBalanced (difference = 0) {
   
-  console.log(`Result is ${result}`)
   let leftHeight = measureLeftSubtree()
   console.log(`leftHeight is ${leftHeight}`)
   let rightHeight = measureRightSubtree()
   console.log(`rightHeight is ${rightHeight}`)
-  result =  leftHeight - rightHeight;
-  console.log(`Result is ${result}`)
+  difference = Math.abs(10 - rightHeight);
+
+  console.log(`The difference between sub-tree heights is ${difference}`)
+  if (difference > 1) console.log(`This binary tree is not balanced.
+  >> type rebalance() to balance the tree.`)
+  if (difference <= 1) console.log(`This binary tree is balanced.`)
 }
 
   function measureTreeHeight (node) {
