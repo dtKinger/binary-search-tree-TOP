@@ -30,9 +30,10 @@ let rightSubtree = root.right;
 // findDepth(root, 8);
 
 prettyPrint(root)
-measureLeftSubtree(); // Measure height of left subTree
-measureRightSubtree(); // Measure height of right subTree
+// measureLeftSubtree(); // Measure height of left subTree
+// measureRightSubtree(); // Measure height of right subTree
 // inOrder(root)
+isBalanced(measureLeftSubtree, measureRightSubtree);
 
 
  /* =================== \
@@ -95,11 +96,22 @@ function levelOrder(root, func = arrayIfy){
   // It's like find() but count on the way and then compare - reassign if greater
 
 function measureLeftSubtree () {
-  return measureTreeHeight(leftSubtree);
+  return parseInt(measureTreeHeight(leftSubtree));
 }
 
 function measureRightSubtree () {
-  return measureTreeHeight(rightSubtree);
+  return parseInt(measureTreeHeight(rightSubtree));
+}
+
+function isBalanced (measureLeft, measureRight, result = 0) {
+  
+  console.log(`Result is ${result}`)
+  let leftHeight = measureLeftSubtree()
+  console.log(`leftHeight is ${leftHeight}`)
+  let rightHeight = measureRightSubtree()
+  console.log(`rightHeight is ${rightHeight}`)
+  result =  leftHeight - rightHeight;
+  console.log(`Result is ${result}`)
 }
 
   function measureTreeHeight (node) {
@@ -116,7 +128,7 @@ function measureRightSubtree () {
     // Update height of the current node
     let ans = Math.max(leftHeight, rightHeight) + 1;
   
-    return console.log(ans);
+    return ans; // Can't just console.log this because the values are needed in other functions now
   }
 
 
