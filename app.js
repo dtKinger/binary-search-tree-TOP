@@ -34,6 +34,16 @@ prettyPrint(root)
 // measureRightSubtree(); // Measure height of right subTree
 // inOrder(root)
 isBalanced();
+aTree.insert(2)
+aTree.insert(6)
+aTree.insert(-1)
+aTree.insert(-10)
+aTree.insert(-20)
+aTree.insert(-30)
+aTree.insert(-40)
+prettyPrint(root)
+isBalanced();
+rebalance(root, sideput);
 
 
  /* =================== \
@@ -78,7 +88,7 @@ function levelOrder(root, func = arrayIfy){
     }
   }
   if (sideput.length > 0){
-    return console.log(sideput)
+    return sideput;
   }
 }
 
@@ -109,7 +119,7 @@ function isBalanced (difference = 0) {
   console.log(`leftHeight is ${leftHeight}`)
   let rightHeight = measureRightSubtree()
   console.log(`rightHeight is ${rightHeight}`)
-  difference = Math.abs(10 - rightHeight);
+  difference = Math.abs(leftHeight - rightHeight);
 
   console.log(`The difference between sub-tree heights is ${difference}`)
   if (difference > 1) console.log(`This binary tree is not balanced.
@@ -117,45 +127,54 @@ function isBalanced (difference = 0) {
   if (difference <= 1) console.log(`This binary tree is balanced.`)
 }
 
-  function measureTreeHeight (node) {
-    // Base Case
-    if (node == null){
-      return -1;
-    }
-    // Store the maximum height of
-    // the left and right subtree
-    let leftHeight = findHeightUtil(node.left);
-  
-    let rightHeight = findHeightUtil(node.right);
-  
-    // Update height of the current node
-    let ans = Math.max(leftHeight, rightHeight) + 1;
-  
-    return ans; // Can't just console.log this because the values are needed in other functions now
+function rebalance (root, array) {
+  console.log('In-order traversal (LDR):')
+  inOrder(root);
+  console.log(array)
+  root = new Tree.Tree(sideput).root; // re-build the tree and get the root
+  // root = newTree.root
+  prettyPrint(root);
+}
+
+function measureTreeHeight (node) {
+  // Base Case
+  if (node == null){
+    return -1;
   }
+  // Store the maximum height of
+  // the left and right subtree
+  let leftHeight = findHeightUtil(node.left);
+
+  let rightHeight = findHeightUtil(node.right);
+
+  // Update height of the current node
+  let ans = Math.max(leftHeight, rightHeight) + 1;
+
+  return ans; // Can't just console.log this because the values are needed in other functions now
+}
 
 
 
-  function findHeightUtil(root, x){
-    // Base Case
-    if (root == null){
-      return -1;
-    }
-    // Store the maximum height of
-    // the left and right subtree
-    let leftHeight = findHeightUtil(root.left, x);
-  
-    let rightHeight = findHeightUtil(root.right, x);
-  
-    // Update height of the current node
-    let ans = Math.max(leftHeight, rightHeight) + 1;
-  
-    // If current node is the required node
-    if (root.data == x)
-        height = ans;
-  
-    return ans;
+function findHeightUtil(root, x){
+  // Base Case
+  if (root == null){
+    return -1;
   }
+  // Store the maximum height of
+  // the left and right subtree
+  let leftHeight = findHeightUtil(root.left, x);
+
+  let rightHeight = findHeightUtil(root.right, x);
+
+  // Update height of the current node
+  let ans = Math.max(leftHeight, rightHeight) + 1;
+
+  // If current node is the required node
+  if (root.data == x)
+      height = ans;
+
+  return ans;
+}
 
 // Function to find the height of
 // a given node in a Binary Tree
@@ -197,9 +216,9 @@ function inOrder(node, func = arrayIfy){
 
   inOrder(node.right) 
 }
-console.log('In-order traversal (LDR):')
-inOrder(root);
-console.log(sideput)
+// console.log('In-order traversal (LDR):')
+// inOrder(root);
+// console.log(sideput)
 
 // Post-order LRD
 
